@@ -2,6 +2,9 @@
 
 # FlaskDrive 
 
+`docker build -t flaskdrive . && docker run -p 8080:5000 --env-file .env flaskdrive`
+`docker rm $(docker ps -qa)`
+
 This repository contains the code for this [blogpost](https://stackabuse.com/file-management-with-aws-s3-python-and-flask/) on [StackAbuse](https://stackabuse.com/).
 
 ## Getting Started

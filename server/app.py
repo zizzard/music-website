@@ -1,12 +1,35 @@
 import os
 
 from flask import Flask, Response
-from s3_demo import list_files
+import boto3
+from botocore.config import Config
 
 import json
 from collections import defaultdict
 
 BUCKET=os.getenv("BUCKET")
+
+get_config = Config(
+    s3={"addressing_style": "virtual"},
+)
+
+def list_files(bucket):
+    """
+    Function to list files in a given S3 bucket
+    """
+    s3 = boto3.client("s3", config=get_config)
+    contents = []
+    try:
+        for item in s3.list_objects(Bucket=bucket)["Contents"]:
+            item["url"] = s3.generate_presigned_url(
+                "get_object", Params = {"Bucket": bucket, "Key": item["Key"]},
+            )
+            contents.append(item)
+    except Exception as e:
+        print(e)
+
+    return contents
+
 
 app = Flask(__name__)
 
@@ -54,8 +77,6 @@ def data():
             "artist": artist,
             "albums": albums
         })
-
-
 
     return Response(json.dumps(to_return), mimetype='application/json')
 
