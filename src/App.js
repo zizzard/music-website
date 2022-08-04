@@ -26,11 +26,9 @@ function App() {
   function updateCurrentSong(song){
     if(audioUI != null) audioUI.pause();
 
-    console.log(song)
     setCurrentSong(song);
 
     let url = song.song_url;
-    console.log(url);
     let audio = new Audio(url);
     audio.play();
 

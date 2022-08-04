@@ -4,7 +4,6 @@ import Artist from './Aritst';
 
 function Navigator({ updateCurrentSong, data }) {
 
-  console.log(data)
   return (
     <div className="navigator nes-container">
         <div className="artists">
