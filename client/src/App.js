@@ -20,7 +20,7 @@ function App() {
       setData(data);
       setLoaded(true);
     });
-  }, []);
+  }, [loaded]);
 
 
   function updateCurrentSong(song){
@@ -59,7 +59,7 @@ function App() {
     let song_index   = currentSong["song_index"] - 1;
     let songs = data[artist_index]["albums"][album_index]["songs"];
 
-    if(-1 == song_index){
+    if(-1 === song_index){
       clearSong();
       return;
     }
@@ -78,7 +78,7 @@ function App() {
     let song_index   = currentSong["song_index"] + 1;
     let songs = data[artist_index]["albums"][album_index]["songs"];
 
-    if(songs.length == song_index){
+    if(songs.length === song_index){
       clearSong();
       return;
     }
