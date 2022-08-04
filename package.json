@@ -2,7 +2,6 @@
   "name": "music",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://zizzard-music.herokuapp.com",
   "homepage": "https://zizzard.github.io/music-website",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

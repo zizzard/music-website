@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     if(loaded) return;
 
-    fetch('/data').then((response) => {
+    fetch('https://zizzard-music.herokuapp.com/data').then((response) => {
       return response.json()
     }).then((data) => {
       setData(data);
