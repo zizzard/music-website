@@ -1,18 +1,25 @@
-FROM python:3.8-alpine
+FROM python:3.8-slim
 
-WORKDIR /usr/src/app
+WORKDIR /
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # USER 65532:65532
-EXPOSE 5000
 
 ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
-ENV FLASK_RUN_PORT=5000
+ENV FLASK_ENV=${ENVIRONMENT}
+ENV FLASK_RUN_PORT=${PORT}
+ENV PORT=${PORT}
 ENV FLASK_RUN_HOST=0.0.0.0
+
+
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+ENV BUCKET=${BUCKET}
+ENV AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
 
 COPY . .
 
-CMD ["flask", "run"]
+# CMD ["sh", "-c", "python app.py"]
+CMD ["python", "app.py"]

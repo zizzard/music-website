@@ -7,7 +7,12 @@ from botocore.config import Config
 import json
 from collections import defaultdict
 
+from waitress import serve
+
+app = Flask(__name__)
+
 BUCKET=os.getenv("BUCKET")
+PORT=os.getenv("PORT")
 
 get_config = Config(
     s3={"addressing_style": "virtual"},
@@ -30,9 +35,6 @@ def list_files(bucket):
 
     return contents
 
-
-app = Flask(__name__)
-
 @app.route("/data")
 def data():
     contents = list_files(BUCKET)
@@ -51,21 +53,24 @@ def data():
         }
     
     to_return = []
-    for artist in organized_contents:
+    for artist_index, artist in enumerate(organized_contents):
         artist_name = artist
 
         albums = []
-        for album in organized_contents[artist]:
+        for album_index, album in enumerate(organized_contents[artist]):
             album_name = album
 
             songs = []
-            for song in organized_contents[artist][album]:
+            for song_index, song in enumerate(organized_contents[artist][album]):
                 song_name = song
                 url = organized_contents[artist][album][song]["url"]
 
                 songs.append({
                     "song": song_name,
-                    "song_url": url
+                    "song_url": url,
+                    "artist_index": artist_index,
+                    "album_index": album_index,
+                    "song_index": song_index
                 })
             
             albums.append({
@@ -81,4 +86,4 @@ def data():
     return Response(json.dumps(to_return), mimetype='application/json')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    serve(app, listen=('*:' + PORT))

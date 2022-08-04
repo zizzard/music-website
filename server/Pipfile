@@ -8,6 +8,7 @@ name = "pypi"
 [packages]
 flask = "*"
 "boto3" = "*"
+"waitress" = "*"
 
 [requires]
 python_version = "3.8"
