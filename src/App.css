@@ -65,7 +65,7 @@ body {
 
 .navigator.nes-container {
   border-bottom: none;
-  border-color: #797c5a;
+  /* border-color: #797c5a; */
 }
 
 .song-display{
@@ -79,13 +79,13 @@ body {
 .song-display.nes-container {
   border-top: none;
   padding: 0;
-  border-color: #797c5a;
+  /* border-color: #797c5a; */
 }
 
 
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -93,11 +93,11 @@ body {
 }
  
 ::-webkit-scrollbar-thumb {
-  background: #797c5a; 
+  background: black; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #797c5a; 
+  background: black; 
 }
 
 .artists{
