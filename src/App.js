@@ -31,6 +31,7 @@ function App() {
 
     let url = song.song_url;
     let audio = new Audio(url);
+    audio.volume = 0.2;
     audio.play();
 
     setAudioUI(audio);
@@ -124,7 +125,7 @@ function App() {
   return (
     <div className="App">
       {loaded && <div className="player nes-container is-rounded">
-        <div className="display">
+        <div className="display nes-container">
           <Navigator data={data} updateCurrentSong={updateCurrentSong} />
           <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} />
         </div>

@@ -34,6 +34,10 @@ body {
   align-items: center;
 }
 
+.display.nes-container {
+    padding: 0;
+}
+
 .controls{
   width: 300px;
   height: 65px;
@@ -44,7 +48,7 @@ body {
   align-items: center;
 
   position: relative;
-  top: -13px;
+  top: -9px;
 
 }
 
@@ -85,7 +89,7 @@ body {
 
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -100,8 +104,6 @@ body {
   background: #797c5a; 
 }
 
-.artists{
-}
 
 .artist-title{
   padding-bottom: 5px;
@@ -111,8 +113,6 @@ body {
   padding-top: 5px;
 }
 
-.songs{
-}
 
 .current-song{
   height: 75px;
@@ -138,10 +138,10 @@ body {
 
 .album-indent{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   text-align: right;
-  left: -10px;
-  width: 32px;
+  left: -12px;
+  width: 50px;
   position: relative;
 }
 
@@ -158,11 +158,11 @@ body {
 
 .song-indent {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   text-align: right;
 
   left: -12px;
-  width: 72px;
+  width: 90px;
   position: relative;
 }
 
@@ -179,7 +179,8 @@ body {
 }
 
 .artist-title, .album-title, .song-title{
-  text-shadow: #c9cda0 2px 2px;
+  text-shadow: #ced1aa 2px 2px;
+  color: #797c5a;
 }
 
 .artist-title:hover , .album-title:hover , .song-title:hover {
@@ -194,6 +195,7 @@ body {
 
   position: relative;
   top: -25px;
+  font-size: 18px;
 }
 
 .deck{
@@ -227,4 +229,16 @@ body {
 .song-current{
   padding: 0.5rem 1.25rem;
   color: #797c5a;
+  width: calc(100% - 150px);
+}
+
+.artist-title,
+.album-title,
+.song-title,
+.song-current:hover{
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
+}
+
+.marquee{
+  padding: 0px 20px;
 }
