@@ -1,15 +1,23 @@
 import Marquee from "react-fast-marquee";
 
-function SongDisplay({currentlyPlaying, currentSong }) {
+function SongDisplay({currentlyPlaying, currentSong, downloading }) {
 
   return (
     <div className="song-display nes-container">
       <div className="song-display-container">
-        <div className="song-playing-status">
-          {
-            currentlyPlaying ? "Playing" : "Paused"
-          }
-        </div>
+        {
+          downloading ? (
+            <div className="song-playing-status">
+              Loading
+            </div>
+          ) : (
+            <div className="song-playing-status">
+              {
+                currentlyPlaying ? "Playing" : "Paused"
+              }
+            </div>
+          )
+        }
         <div className="song-current">
           {
             (currentSong !== null) ?  
