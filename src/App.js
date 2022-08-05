@@ -124,31 +124,41 @@ function App() {
 
   return (
     <div className="App">
-      {loaded && <div className="player nes-container is-rounded">
-        <div className="display nes-container">
-          <Navigator data={data} updateCurrentSong={updateCurrentSong} />
-          <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} />
-        </div>
-        <div className="deck">
-          <div className="speaker">
+      {loaded && <>
+        <div className="player nes-container is-rounded">
+          <div className="display nes-container">
+            <Navigator data={data} updateCurrentSong={updateCurrentSong} />
+            <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} />
+          </div>
+          <div className="deck">
+            <div className="speaker">
+              {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
+            </div>
+            <div className="center-deck">
+              {/* <div className="retro-piff">
+                <div className="retro">RETRO</div>
+                <div className="piff">piff</div>
+              </div> */}
+              <div className="controls">
+                <div className="play nes-btn" onClick={prev}>
+                  <div className="nes-btn-text">{"<"}</div>
+                </div>
+                <div className="play nes-btn wide" onClick={pause}>
+                  <div className="nes-btn-text">{currentlyPlaying ? "Pause" : "Play"}</div>
+                </div>
+                <div className="play nes-btn" onClick={next}>
+                  <div className="nes-btn-text">{">"}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="speaker">
             {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
-          </div>
-          <div className="controls">
-            <div className="play nes-btn" onClick={prev}>
-              <div className="nes-btn-text">{"<"}</div>
             </div>
-            <div className="play nes-btn wide" onClick={pause}>
-              <div className="nes-btn-text">{currentlyPlaying ? "Pause" : "Play"}</div>
-            </div>
-            <div className="play nes-btn" onClick={next}>
-              <div className="nes-btn-text">{">"}</div>
-            </div>
-          </div>
-          <div className="speaker">
-          {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
           </div>
         </div>
-      </div>
+        <div className="player background"></div>
+      </>
       }
     </div>
   );

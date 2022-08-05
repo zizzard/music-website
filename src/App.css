@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 5;
 }
 
 .display{
@@ -39,16 +40,12 @@ body {
 }
 
 .controls{
-  width: 300px;
   height: 65px;
-
   padding: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-  position: relative;
-  top: -9px;
+  width: 300px;
 
 }
 
@@ -242,3 +239,73 @@ body {
 .marquee{
   padding: 0px 20px;
 }
+
+.background{
+  background: #797c5a;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+
+  padding: 1rem 1.5rem;
+  margin: 4px;
+
+  transform: translate(calc(-50% - 4px), calc(-50% + 13px));
+  z-index: 0;
+
+  border-style: solid;
+  border-width: 4px;
+
+  border-image-slice: 3;
+  border-image-width: 3;
+  border-image-repeat: stretch;
+  border-image-source: url(data:image/svg+xml;utf8,<?xml%20version=%221.0%22%20encoding=%22UTF-8%22%20?%3E%3Csvg%20version=%221.1%22%20width=%228%22%20height=%228%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath%20d=%22M3%201%20h1%20v1%20h-1%20z%20M4%201%20h1%20v1%20h-1%20z%20M2%202%20h1%20v1%20h-1%20z%20M5%202%20h1%20v1%20h-1%20z%20M1%203%20h1%20v1%20h-1%20z%20M6%203%20h1%20v1%20h-1%20z%20M1%204%20h1%20v1%20h-1%20z%20M6%204%20h1%20v1%20h-1%20z%20M2%205%20h1%20v1%20h-1%20z%20M5%205%20h1%20v1%20h-1%20z%20M3%206%20h1%20v1%20h-1%20z%20M4%206%20h1%20v1%20h-1%20z%22%20fill=%22rgb%280,0,0%29%22%20/%3E%3C/svg%3E);
+  border-image-outset: 2;
+
+  width: 792px;
+}
+
+.center-deck{
+  /* display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
+  width: 300px; */
+  position: relative;
+  top: -5px;
+
+}
+/* 
+@font-face{
+  font-family: "Gill Sans";
+  src:  url("../fonts/Gill-Sans-Heavy-Italic.otf") format("otf"),
+        url("../fonts/Gill-Sans-Bold-Italic.otf") format("otf"),
+        url("../fonts/Gill-Sans-Bold.otf") format("otf"),
+        url("../fonts/Gill-Sans-Heavy-Italic.otf") format("otf"),
+        url("../fonts/Gill-Sans-Heavy.otf") format("otf"),
+        url("../fonts/Gill-Sans-Italic.otf") format("otf"),
+
+        
+        
+        
+        
+        
+}
+
+.retro-piff{
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+  top: -10px;
+
+  font-size: 25px;
+  font-family: "GS";
+}
+.retro{
+  
+
+}
+.piff{
+
+} */
