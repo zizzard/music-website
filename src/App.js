@@ -3,6 +3,7 @@ import './nes.css';
 
 import React, { useState, useEffect } from "react";
 import Navigator from './Navigator';
+import SongDisplay from './SongDisplay';
 
 function App() {
   const [currentSong, setCurrentSong]           = useState(null);
@@ -123,27 +124,28 @@ function App() {
   return (
     <div className="App">
       {loaded && <div className="player nes-container is-rounded">
-        <Navigator data={data} updateCurrentSong={updateCurrentSong} />
-        <div className="current-song">
-          {
-            (currentSong !== null) ? 
-            <>
-              <div>{currentSong.song}</div>
-              {currentlyPlaying ? <div>Playing</div> : <div>Paused</div>}
-            </> : <></>
-          }
+        <div className="display">
+          <Navigator data={data} updateCurrentSong={updateCurrentSong} />
+          <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} />
         </div>
-
-        <div className="controls nes-container">
+        <div className="deck">
+          <div className="speaker">
+            {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
+          </div>
+          <div className="controls">
             <div className="play nes-btn" onClick={prev}>
               <div className="nes-btn-text">{"<"}</div>
             </div>
-            <div className="play nes-btn" onClick={pause}>
-              <div className="nes-btn-text">{"P"}</div>
+            <div className="play nes-btn wide" onClick={pause}>
+              <div className="nes-btn-text">{currentlyPlaying ? "Pause" : "Play"}</div>
             </div>
             <div className="play nes-btn" onClick={next}>
               <div className="nes-btn-text">{">"}</div>
             </div>
+          </div>
+          <div className="speaker">
+          {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
+          </div>
         </div>
       </div>
       }

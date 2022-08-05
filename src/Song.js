@@ -4,8 +4,9 @@ function Song({ song, updateCurrentSong }) {
   }
 
   return (
-    <div className="song">
-      <div onClick={playSong}>{song.song}</div>
+    <div className="song-container">
+      <div className="song-indent">¬</div>
+      <div className="song-title" onClick={playSong}>{song.song}</div>
     </div>
   );
 }

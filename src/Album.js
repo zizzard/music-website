@@ -18,11 +18,16 @@ function Album({ album, updateCurrentSong }) {
 
 
   return (
-    <div className="song" >
-      <div onClick={clickAlbum}>{title}</div>
-        {
-          showSongs ? <div className="songs">{songs}</div> : <></>
-        }
+    <div className="album-container">
+      <div className="album-header">
+        <div className="album-indent">¬</div>
+        <div className="album-title" onClick={clickAlbum}>{title}</div>
+      </div>
+      <div className="album" >
+          {
+            showSongs ? <div className="songs">{songs}</div> : <></>
+          }
+      </div>
     </div>
   );
 }

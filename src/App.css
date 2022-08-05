@@ -15,25 +15,37 @@ body {
   height: 100vh;
 
   font-family: "Press Start 2P";
+  color: rgb(54 54 30);
 }
 
 .player{
   background: rgb(201, 205, 161);
-  
-  height: 500px;
+  height: 650px;
   width: 800px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.display{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .controls{
-  width: 100%;
-  height: 115px;
+  width: 300px;
+  height: 65px;
 
+  padding: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 
-  background: rgb(147 151 108);
+  position: relative;
+  top: -13px;
+
 }
 
 .play{
@@ -44,18 +56,36 @@ body {
 .navigator{
 
   width: 100%;
-  height: 280px;
+  height: 400px;
 
-  color: rgb(54 54 30);
   background: rgb(232, 238, 192);
 
   overflow-y: scroll;
-  margin-bottom: 20px;
-
 }
 
+.navigator.nes-container {
+  border-bottom: none;
+  border-color: #797c5a;
+}
+
+.song-display{
+
+  width: 100%;
+  height: 52px;
+
+  background: rgb(232, 238, 192);
+}
+
+.song-display.nes-container {
+  border-top: none;
+  padding: 0;
+  border-color: #797c5a;
+}
+
+
+
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -63,34 +93,138 @@ body {
 }
  
 ::-webkit-scrollbar-thumb {
-  background: black; 
+  background: #797c5a; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #797c5a; 
 }
 
 .artists{
-  height: 100%;
+}
+
+.artist-title{
+  padding-bottom: 5px;
 }
 
 .albums{
-  padding-left: 25px;
+  padding-top: 5px;
 }
 
 .songs{
-  padding-left: 25px;
-
-  /* line-height: 1.5; */
 }
 
 .current-song{
+  height: 75px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.album-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.album-header{
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
-  height: 30px;
 
+  height: 25px;
+  padding-bottom: 10px;
+}
+
+.album-indent{
+  display: flex;
+  justify-content: end;
+  text-align: right;
+  left: -10px;
+  width: 32px;
+  position: relative;
+}
+
+.album-title {
+  height: 14px;
+  display: flex;
+}
+
+.song-container{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 8px;
+}
+
+.song-indent {
+  display: flex;
+  justify-content: end;
+  text-align: right;
+
+  left: -12px;
+  width: 72px;
+  position: relative;
+}
+
+.song-title {
+  display: flex;
+  align-items: center;
+
+  width: 90%;
+  line-height: 1.05;
+}
+
+.wide {
+  width: 125px;
+}
+
+.artist-title, .album-title, .song-title{
+  text-shadow: #c9cda0 2px 2px;
+}
+
+.artist-title:hover , .album-title:hover , .song-title:hover {
+  text-shadow: #b2b68b 2px 2px;
+}
+
+.speaker{
+  display: flex;
+  justify-content: center;
+  text-shadow: #7d805e 2px 2px;
   text-align: center;
-  color: rgb(54 54 30);
 
-  margin-bottom: 20px;
-  
+  position: relative;
+  top: -25px;
+}
+
+.deck{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.song-display-container{
+  border-top: 5px solid #797c5a;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  flex-direction: row;
+}
+
+.song-playing-status{
+  width: 150px;
+  background: #797c5a;
+
+  height: 100%;
+  color: rgb(201, 205, 161);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.song-current{
+  padding: 0.5rem 1.25rem;
+  color: #797c5a;
 }

@@ -30,10 +30,6 @@
     box-sizing: border-box;
 }
 
-.nes-container > :last-child {
-    margin-bottom: 0;
-}
-
 .nes-btn {
     border-image-slice: 2;
     border-image-width: 2;
@@ -52,7 +48,7 @@
     -ms-user-select: none;
     user-select: none;
     color: #212529;
-    background-color: #fff;
+    background-color: #e8eec0;
 }
 
 .nes-btn::after {
@@ -62,17 +58,16 @@
     bottom: -4px;
     left: -4px;
     content: "";
-    box-shadow: inset -4px -4px #adafbc;
+    box-shadow: inset -4px -4px #565435;;
 }
 
 .nes-btn:hover {
-    color: #212529;
     text-decoration: none;
-    background-color: #e7e7e7;
+    background-color: #d2d8ac;
 }
 
 .nes-btn:active:not(.is-disabled)::after {
-    box-shadow: inset 4px 4px #adafbc;
+    box-shadow: inset 4px 4px #5c5b51;
 }
 
 .nes-btn-text{
