@@ -287,47 +287,18 @@ body {
 }
 
 .center-deck{
-  /* display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-
-  width: 300px; */
   position: relative;
   top: -5px;
-
-}
-/* 
-@font-face{
-  font-family: "Gill Sans";
-  src:  url("../fonts/Gill-Sans-Heavy-Italic.otf") format("otf"),
-        url("../fonts/Gill-Sans-Bold-Italic.otf") format("otf"),
-        url("../fonts/Gill-Sans-Bold.otf") format("otf"),
-        url("../fonts/Gill-Sans-Heavy-Italic.otf") format("otf"),
-        url("../fonts/Gill-Sans-Heavy.otf") format("otf"),
-        url("../fonts/Gill-Sans-Italic.otf") format("otf"),
-
-        
-        
-        
-        
-        
 }
 
-.retro-piff{
+.loading-page{
+  width: 150px;
+  background: #797c5a;
+
+  height: 50px;
+  color: rgb(201, 205, 161);
+
   display: flex;
   justify-content: center;
-
-  position: relative;
-  top: -10px;
-
-  font-size: 25px;
-  font-family: "GS";
+  align-items: center;
 }
-.retro{
-  
-
-}
-.piff{
-
-} */

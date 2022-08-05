@@ -11,7 +11,10 @@ function App() {
   const [audioUI, setAudioUI]                   = useState(null);
   const [data, setData]                         = useState(null);
   const [loaded, setLoaded]                     = useState(false);
-  const [downloading, setDownloading]           = useState(false)
+  const [downloading, setDownloading]           = useState(false);
+  const [songIndex, setSongIndex]               = useState(null);
+  const [songEnded, setSongEnded]               = useState(false);
+
 
   useEffect(() => {
     if(loaded) return;
@@ -24,6 +27,29 @@ function App() {
     });
   }, [loaded]);
 
+  useEffect(() => {
+    if(!songEnded) return;
+
+    if(audioUI !== null) audioUI.pause();
+    setCurrentlyPlaying(false);
+
+    let artist_index = songIndex[0];
+    let album_index  = songIndex[1];
+    let song_index   = songIndex[2] + 1;
+    let songs = data[artist_index]["albums"][album_index]["songs"];
+
+    if(songs.length === song_index){
+      clearSong();
+      return;
+    }
+
+    updateCurrentSong(songs[song_index]);
+    setSongEnded(false);
+  }, [songEnded]);
+
+  function songEndedFunc(){
+    setSongEnded(true);
+  }
 
   function updateCurrentSong(song){
     if(audioUI != null) audioUI.pause();
@@ -31,10 +57,16 @@ function App() {
     setDownloading(true);
     setCurrentSong(song);
 
+    let artist_index = song["artist_index"];
+    let album_index  = song["album_index"];
+    let song_index   = song["song_index"];
+    let index = [artist_index, album_index, song_index];
+    setSongIndex(index);
+
     let url = song.song_url;
     let audio = new Audio(url)
-    audio.volume = 0.2;
-    audio.addEventListener("ended", songEnded);
+    audio.volume = 0.005;
+    audio.addEventListener("ended", songEndedFunc);
 
     audio.play().then(() => {
       setDownloading(false);
@@ -44,20 +76,17 @@ function App() {
   }
 
   function play(){
-    console.log("play");
     if(currentSong === null) return;
     audioUI.play();
     setCurrentlyPlaying(true);
   }
 
   function pause(){
-    console.log("pause");
     audioUI.pause();
     setCurrentlyPlaying(false);
   }
 
   function prev(){
-    console.log("prev");
     if(currentlyPlaying){
       audioUI.pause();
       setCurrentlyPlaying(false);
@@ -76,28 +105,7 @@ function App() {
     updateCurrentSong(songs[song_index]);
   }
 
-  function songEnded(){
-    console.log("songEnded");
-    if(audioUI !== null) audioUI.pause();
-    setCurrentlyPlaying(false);
-
-    // let artist_index = currentSong["artist_index"];
-    // let album_index  = currentSong["album_index"];
-    // let song_index   = currentSong["song_index"] + 1;
-    // let songs = data[artist_index]["albums"][album_index]["songs"];
-
-    // if(songs.length === song_index){
-    //   clearSong();
-    //   return;
-    // }
-
-    // updateCurrentSong(songs[song_index]);
-  }
-  
-
   function next(){
-    console.log("next");
-    console.log("NEXT CALLED");
     if(currentlyPlaying){
       audioUI.pause();
       setCurrentlyPlaying(false);
@@ -117,14 +125,14 @@ function App() {
   }
 
   function clearSong(){
-    console.log("clearSong");
     setCurrentSong(null);
     setCurrentlyPlaying(false);
   }
 
   return (
     <div className="App">
-      {loaded && <>
+      {loaded ?
+       <>
         <div className="player nes-container is-rounded">
           <div className="display nes-container">
             <Navigator data={data} updateCurrentSong={updateCurrentSong} />
@@ -135,10 +143,6 @@ function App() {
               {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
             </div>
             <div className="center-deck">
-              {/* <div className="retro-piff">
-                <div className="retro">RETRO</div>
-                <div className="piff">piff</div>
-              </div> */}
               <div className="controls">
                 <div className="play nes-btn" onClick={prev}>
                   <div className="nes-btn-text">{"<"}</div>
@@ -158,6 +162,11 @@ function App() {
           </div>
         </div>
         <div className="player background"></div>
+      </> :
+      <>
+        <div className="nes-container is-rounded loading-page">
+          Loading
+        </div>
       </>
       }
     </div>
