@@ -4,6 +4,8 @@ import './nes.css';
 import React, { useState, useEffect } from "react";
 import Navigator from './Navigator';
 import SongDisplay from './SongDisplay';
+import Speaker from './Speaker';
+import ControlDeck from './ControlDeck';
 
 function App() {
   const [currentSong, setCurrentSong]           = useState(null);
@@ -15,6 +17,22 @@ function App() {
   const [songIndex, setSongIndex]               = useState(null);
   const [songEnded, setSongEnded]               = useState(false);
 
+  // const [volume, setVolume]                     = useState(20);
+
+  // function changeVolume(event){
+  //   setVolume(event);
+  // }
+
+  // function getVolume(){
+  //   return volume / 100;
+  // }
+
+  // useEffect(() =>{
+  //   console.log(volume);
+  //   // if(audioUI === null) return;
+  //   // audioUI.volume = getVolume(volume);
+  //   // audioUI, 
+  // }, [volume])
 
   useEffect(() => {
     if(loaded) return;
@@ -65,12 +83,12 @@ function App() {
 
     let url = song.song_url;
     let audio = new Audio(url)
-    audio.volume = 0.02;
+    audio.volume = 0.2;
     audio.addEventListener("ended", songEndedFunc);
 
     audio.play().then(() => {
-      setDownloading(false);
       setAudioUI(audio);
+      setDownloading(false);
       setCurrentlyPlaying(true);
     });
   }
@@ -132,52 +150,25 @@ function App() {
   return (
     <div className="App">
         <div className="player nes-container is-rounded">
-        <div className="display nes-container">
-          {loaded ? 
-            (<>
-            
-              <Navigator data={data} updateCurrentSong={updateCurrentSong} />
-              <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} downloading={downloading} />
-
-            </>) 
-            : (<>
-              <div className="loading-center">
-                <div className="loading-text">
-                  Loading
-                </div>
-              </div>
-            </>)
-          }
-        </div>
-
-
+          <div className="display nes-container">
+            <Navigator loaded={loaded} data={data} updateCurrentSong={updateCurrentSong} />
+            <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} downloading={downloading} />
+          </div>
           <div className="deck">
-            <div className="speaker left">
-              {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
-            </div>
-            <div className="center-deck">
-              <div className="controls">
-                <div className="play nes-btn" onClick={prev}>
-                  <div className="nes-btn-text">{"<"}</div>
-                </div>
-                <div className="play nes-btn wide" onClick={currentlyPlaying ? pause : play}>
-                  <div className="nes-btn-text">{currentlyPlaying ? "Pause" : "Play"}</div>
-                </div>
-                <div className="play nes-btn" onClick={next}>
-                  <div className="nes-btn-text">{">"}</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="speaker right">
-            {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
-            </div>
+            <Speaker side="left" />
+            <ControlDeck prev={prev} next={next} play={play} pause={pause} currentlyPlaying={currentlyPlaying} />
+            <Speaker side="right" />
           </div>
         </div>
         <div className="player background"></div>
+        {/* <div className="slider-container">
+          <input type="range" min="0" max="100" value={volume} onChange={changeVolume} className="slider" orient="vertical" />
+        </div> */}
     </div>
+
   );
 }
+
 
 export default App;
 

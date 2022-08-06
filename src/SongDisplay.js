@@ -1,6 +1,6 @@
 import Marquee from "react-fast-marquee";
 
-function SongDisplay({currentlyPlaying, currentSong, downloading }) {
+function SongDisplay({ currentlyPlaying, currentSong, downloading }) {
 
   return (
     <div className="song-display nes-container">
