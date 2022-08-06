@@ -198,6 +198,7 @@ body {
   color: #797c5a;
   z-index: 5;
   min-width: 100px;
+  max-width: 85%;
 }
 
 .artist-title:hover , .album-title:hover , .song-title:hover {
@@ -321,6 +322,11 @@ body {
     height: 80%;
     width: 90%;
     font-size: 14px;
+    max-height: 600px;
+  }
+
+  .background {
+    width: calc(90% - 8px)
   }
 
   .display{
@@ -362,6 +368,7 @@ body {
   .song-title {
     padding-bottom: 4px;
   }
+
 }
 
 @media only screen and (max-width: 500px) {
@@ -369,6 +376,7 @@ body {
     height: 80%;
     width: 90%;
     font-size: 12px;
+    max-height: 600px;
   }
 
   .background {
@@ -376,13 +384,13 @@ body {
   }
 
   .display{
-    height: 80%;
+    height: 85%;
   }
 
   .deck{
     height: 20%;
     align-items: flex-end;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .navigator{
@@ -391,13 +399,13 @@ body {
 
   .song-playing-status{
     width: 85px;
-    font-size: 12px;
+    font-size: 10px;
     padding: 0.25rem 0.75rem;
   }
 
   .song-current {
     width: calc(100% - 85px);
-    font-size: 11px;
+    font-size: 10px;
     padding: 0.25rem 0.75rem;
   }
 
@@ -405,19 +413,35 @@ body {
     height: 36px;
   }
   
-
   .speaker {
     display: none;
   }
 
   .album-indent{
     width: 25px;
-    left: 10px;
+    left: 8px;
   }
 
   .song-indent{
     width: 45px;
     left: 25px;
+  }
+
+  .controls{
+    width: 250px;
+  }
+
+  .play {
+    width: 40px;
+    height: 40px;
+  }
+
+  .wide{
+    width: 100px;
+  }
+
+  .nes-btn-text {
+    top: 3px !important;
   }
 
 }
