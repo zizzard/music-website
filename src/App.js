@@ -65,7 +65,7 @@ function App() {
 
     let url = song.song_url;
     let audio = new Audio(url)
-    audio.volume = 0.005;
+    audio.volume = 0.02;
     audio.addEventListener("ended", songEndedFunc);
 
     audio.play().then(() => {
@@ -131,13 +131,26 @@ function App() {
 
   return (
     <div className="App">
-      {loaded ?
-       <>
         <div className="player nes-container is-rounded">
-          <div className="display nes-container">
-            <Navigator data={data} updateCurrentSong={updateCurrentSong} />
-            <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} downloading={downloading} />
-          </div>
+        <div className="display nes-container">
+          {loaded ? 
+            (<>
+            
+              <Navigator data={data} updateCurrentSong={updateCurrentSong} />
+              <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} downloading={downloading} />
+
+            </>) 
+            : (<>
+              <div className="loading-center">
+                <div className="loading-text">
+                  Loading
+                </div>
+              </div>
+            </>)
+          }
+        </div>
+
+
           <div className="deck">
             <div className="speaker left">
               {" . . ."}<br />{". . . ."}<br />{" . . ."}<br />{". . . ."}<br />{" . . ."}
@@ -162,13 +175,6 @@ function App() {
           </div>
         </div>
         <div className="player background"></div>
-      </> :
-      <>
-        <div className="nes-container is-rounded loading-page">
-          Loading
-        </div>
-      </>
-      }
     </div>
   );
 }

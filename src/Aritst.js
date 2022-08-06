@@ -17,12 +17,14 @@ function Artist({ artist, updateCurrentSong }) {
 
 
   return (
+    <>
     <div className="artist-title">
       <div onClick={clickArtist}>{title}</div>
-        {
-          showAlbums ? <div className="albums">{albums}</div> : <></>
-        }
     </div>
+    {
+      showAlbums ? <div className="albums">{albums}</div> : <></>
+    }
+    </>
   );
 }
 

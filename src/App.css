@@ -33,6 +33,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  background: rgb(232, 238, 192);
+  height: 460px;
 }
 
 .display.nes-container {
@@ -46,7 +49,6 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 300px;
-
 }
 
 .play{
@@ -58,9 +60,6 @@ body {
 
   width: 100%;
   height: 400px;
-
-  background: rgb(232, 238, 192);
-
   overflow-y: scroll;
 }
 
@@ -73,8 +72,6 @@ body {
 
   width: 100%;
   height: 52px;
-
-  background: rgb(232, 238, 192);
 }
 
 .song-display.nes-container {
@@ -147,6 +144,7 @@ body {
   top: -2px;
   transform: rotate(180deg);
   text-shadow: #ced1aa -2px -2px;
+  color: #797c5a;
 }
 
 .album-title {
@@ -172,6 +170,7 @@ body {
   left: 60px;
   transform: rotate(180deg);
   text-shadow: #ced1aa -2px -2px;
+  color: #797c5a;
 }
 
 .song-title {
@@ -291,14 +290,16 @@ body {
   top: -5px;
 }
 
-.loading-page{
-  width: 150px;
-  background: #797c5a;
-
-  height: 50px;
-  color: rgb(201, 205, 161);
-
+.loading-center{
   display: flex;
-  justify-content: center;
   align-items: center;
+  height: 100%;
+}
+
+.loading-text{
+  position: relative;
+  top: 2px;
+  
+  text-shadow: #ced1aa 2px 2px;
+  color: #797c5a;
 }
