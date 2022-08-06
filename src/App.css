@@ -326,7 +326,7 @@ body {
   }
 
   .background {
-    width: calc(90% - 8px)
+    width: calc(90% - 8px);
   }
 
   .display{
@@ -372,16 +372,36 @@ body {
 }
 
 @media only screen and (max-width: 500px) {
+
+  .App{
+    align-items: start;
+  }
+
+  
   .player {
     height: 80%;
     width: 90%;
     font-size: 12px;
     max-height: 600px;
+
+    position: relative;
+    top: 30px;
   }
 
   .background {
-    width: calc(90% - 8px)
+    width: calc(90% - 8px);
+    position: fixed;
+    transform: translate(calc(-50% + -4px), calc(10px));
   }
+
+  .player {
+    height: 80%;
+    width: 90%;
+    font-size: 14px;
+    max-height: 600px;
+  }
+
+
 
   .display{
     height: 85%;
