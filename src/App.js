@@ -39,7 +39,10 @@ function App() {
     if(loaded) return;
 
     fetch('https://zizzard-music.herokuapp.com/data').then((response) => {
+      console.log(response);
       return response.json()
+    }, (error) =>{
+      return ({"error": "failed"})
     }).then((data) => {
       if(data["success"]){
         setData(data["payload"]);
