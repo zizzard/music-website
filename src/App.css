@@ -377,7 +377,7 @@ body {
     align-items: start;
   }
 
-  
+
   .player {
     height: 80%;
     width: 90%;
@@ -391,7 +391,7 @@ body {
   .background {
     width: calc(90% - 8px);
     position: fixed;
-    transform: translate(calc(-50% + -4px), calc(10px));
+    transform: translate(calc(-50% + -4px), 10px);
   }
 
   .player {

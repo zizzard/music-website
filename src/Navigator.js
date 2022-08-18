@@ -2,14 +2,14 @@ import React from 'react';
 
 import Artist from './Aritst';
 
-function Navigator({ loaded, updateCurrentSong, data }) {
+function Navigator({ loaded, updateCurrentSong, data, dataFailure }) {
 
   return (
     <div className="navigator nes-container">
       {!loaded ? 
         <div className="loading-center">
           <div className="loading-text">
-            Downloading music library...
+            {dataFailure ? "Failed to load library, please try again..." : "Downloading music library..."}
           </div>
         </div> : 
         <div className="artists">

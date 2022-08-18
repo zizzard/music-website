@@ -12,6 +12,7 @@ function App() {
   const [currentlyPlaying, setCurrentlyPlaying] = useState(false);
   const [audioUI, setAudioUI]                   = useState(null);
   const [data, setData]                         = useState(null);
+  const [dataFailure, setDataFailure]           = useState(false);
   const [loaded, setLoaded]                     = useState(false);
   const [downloading, setDownloading]           = useState(false);
   const [songIndex, setSongIndex]               = useState(null);
@@ -40,8 +41,12 @@ function App() {
     fetch('https://zizzard-music.herokuapp.com/data').then((response) => {
       return response.json()
     }).then((data) => {
-      setData(data);
-      setLoaded(true);
+      if(data["success"]){
+        setData(data["payload"]);
+        setLoaded(true);
+      }else{
+        setDataFailure(true);
+      }
     });
   }, [loaded]);
 
@@ -151,7 +156,7 @@ function App() {
     <div className="App">
         <div className="player nes-container is-rounded">
           <div className="display nes-container">
-            <Navigator loaded={loaded} data={data} updateCurrentSong={updateCurrentSong} />
+            <Navigator loaded={loaded} data={data} updateCurrentSong={updateCurrentSong} dataFailure={dataFailure} />
             <SongDisplay currentlyPlaying={currentlyPlaying} currentSong={currentSong} downloading={downloading} />
           </div>
           <div className="deck">
