@@ -18,6 +18,14 @@ body {
   color: rgb(54 54 30);
 }
 
+.App-Spotify {
+  background: rgb(220, 215, 162);
+  height: 100vh;
+
+  font-family: "Press Start 2P";
+  color: rgb(54 54 30);
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -58,7 +66,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 300px;
+  width: 225px;
 }
 
 .play{
@@ -71,6 +79,7 @@ body {
   width: 100%;
   height: 400px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .navigator.nes-container {
@@ -93,11 +102,11 @@ body {
 
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(232, 238, 192);
+  background: #ced1aa;
 }
  
 ::-webkit-scrollbar-thumb {
@@ -208,11 +217,9 @@ body {
 .speaker{
   display: flex;
   justify-content: center;
+  align-items: center;
   text-shadow: #7d805e 2px 2px;
   text-align: center;
-
-  position: relative;
-  top: -25px;
   font-size: 18px;
 }
 
@@ -228,6 +235,10 @@ body {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  height: 125px;
+
+  position: relative;
+  top: -5px;
 }
 
 .song-display-container{
@@ -295,6 +306,12 @@ body {
 }
 
 .center-deck{
+  height: 135px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   top: -5px;
 }
@@ -369,6 +386,14 @@ body {
     padding-bottom: 4px;
   }
 
+  .nes-btn {
+    font-size: 16px !important;
+  }
+
+  .play-pause-btn{
+    font-size: 14px !important;
+    right: 4px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -448,7 +473,7 @@ body {
   }
 
   .controls{
-    width: 250px;
+    width: 185px;
   }
 
   .play {
@@ -464,8 +489,272 @@ body {
     top: 3px !important;
   }
 
+  .nes-btn {
+    font-size: 14px !important;
+  }
+
+  .play-pause-btn{
+    font-size: 12px !important;
+    right: 5px;
+  }
+
 }
 
+.rankings {
+  width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  height: 100%;
+
+  scroll-behavior: smooth;
+}
+
+.rankings.nes-container {
+  /* border-bottom: none; */
+  border-color: #797c5a;
+  padding: 0;
+}
+
+.ranking-row{
+  display: flex;
+  height: 100%;
+  padding: 40px 0px;
+  height: 50px;
+  width: 100%;
+}
+
+.first-row{
+  /* border-top: 0;
+  height: 46px;
+  min-height: 46px;
+
+  position: relative;
+  top: -2px; */
+}
+
+.last-row{
+  /* border-bottom: 0; 
+  height: 46px;
+  min-height: 46px;
+  
+  position: relative;
+  top: -2px; */
+}
+
+/* .first-row>.ranking-number,
+.last-row>.ranking-number,
+.first-row>.ranking-name,
+.last-row>.ranking-name,
+.first-row>.ranking-link,
+.last-row>.ranking-link {
+  position: relative;
+  top: 2px;
+} */
+
+.ranking-number{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  left: 1px;
+
+  width: 70px;
+  height: 100%;
+}
+
+.ranking-name{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding-left: 15px;
+  /* border-left: 4px solid; */
+
+  width: calc(100% - 70px - 170px);
+  height: 100%;
+
+  text-align: left;
+  line-height: 1.1;
+}
+
+.ranking-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* border-left: 4px solid; */
+
+  width: 170px;
+  height: 100%;
+}
+
+.row-even {
+  text-shadow: #ced1aa 2px 2px;
+  color: #797c5a;
+}
+
+.row-odd {
+  text-shadow: rgb(147, 149, 125) 2px 2px;
+  color: #ced1aa;
+  background: #797c5a;
+}
+
+.nes-btn {
+  font-size: 18px;
+}
+
+
+.play-pause-btn{
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+
+  position: relative;
+  right: 3px;
+}
+
+.play-arrow{
+  letter-spacing: -.35em;
+}
+
+.play-bars{
+  letter-spacing: -0.55em;
+}
+
+.ranking-song-link{
+  text-decoration: none;
+  color: inherit;
+
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
+}
+
+.spotify-deck{
+  height: 135px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  top: -5px;
+
+}
+
+.song-string-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 242px;
+  text-shadow: #ced1aa 2px 2px;
+  color: #797c5a;
+  background: rgb(232, 238, 192);
+}
+
+.song-controls{
+  height: 65px;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 225px;
+}
+
+.spotify-login-link {
+  text-decoration: none;
+  color: inherit;
+
+  text-shadow: #c9cda0 2px 2px;
+  color: rgb(54 54 30);
+}
+
+.login{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.tab-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: absolute;
+
+  top: calc(50% - 325px - 39px);
+  left: calc(50% - 387px);
+}
+
+.tab{
+  border-image-slice: 2;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-source: url(data:image/svg+xml;utf8,<?xml%20version=%221.0%22%20encoding=%22UTF-8%22%20?%3E%3Csvg%20version=%221.1%22%20width=%225%22%20height=%225%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath%20d=%22M2%201%20h1%20v1%20h-1%20z%20M1%202%20h1%20v1%20h-1%20z%20M3%202%20h1%20v1%20h-1%20z%20M2%203%20h1%20v1%20h-1%20z%22%20fill=%22rgb%2833,37,41%29%22%20/%3E%3C/svg%3E);
+  border-image-outset: 2;
+  position: relative;
+  display: inline-block;
+  padding: 6px 8px;
+  margin: 4px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  color: #212529;
+  background-color: #e8eec0;
+  border-style: solid;
+  border-width: 4px;
+
+  text-shadow: #c9cda0  2px 2px;
+  color: rgb(54 54 30);
+
+  margin-right: 12px;
+  width: 150px;
+
+}
+
+.tab::after {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+  content: "";
+  box-shadow: inset -4px -4px #565435;
+}
+
+.tab:active {
+  background-color: #d2d8ac;
+}
+
+.app-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Press Start 2P";
+  color: rgb(54 54 30);
+}
+
+.nes-btn-text {
+    /* top: 6px; */
+    position: relative;
+    text-shadow: #c9cda0 2px 2px;
+    color: rgb(54 54 30);
+}
+
+.login.nes-container {
+  border-color: #797c5a;
+}
 
 /* .slider-container {
   height: 250px;
